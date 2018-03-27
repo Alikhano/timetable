@@ -6,6 +6,14 @@
 <html>
 <body>
 
+<style type="text/css">
+
+    .buttons {
+        size: 50px;
+        background:#e0ffff}
+
+</style>
+
 <a href="/timetable">Back to main menu</a>
 
 <br>
@@ -71,7 +79,7 @@
 
     <c:forEach begin="9" end="18" step="1" var="time">
         <tr>
-            <TD align="center" valign="middle" width="80">
+            <td align="center" valign="middle" width="80">
                 <c:choose>
                     <c:when test="${time == 12}">
                         <c:out value="${time}" />:00pm
@@ -82,17 +90,29 @@
                     <c:otherwise>
                         <c:out value="${time}" />:00am
                     </c:otherwise>
-                </c:choose></TD>
+                </c:choose>
+            </td>
             <c:if test="${!empty listCourse}">
                 <c:forEach begin="1" end="5" step="1" var="day">
                     <td align="center" valign="middle" width="100">
                         <c:forEach items="${listCourse}" var="course">
                             <c:if test="${course.startTime <= time
                             && course.endTime > time
-
                             && course.weekDay == day}">
                                 <c:out value="${course.courseName}"/>
                                 <c:out value="${course.groupId}"/>
+                                <br>
+                               <%-- <form action="/timetable/edit" method="post" commandName = "course">
+
+                                    <input type="submit" class="buttons"
+                                           value="<spring:message text="Edit"/>"/>
+                                </form>--%>
+                                <br>
+                                <form action="/timetable/delete-course" method="post" commandName = "course">
+                                    <input type="submit" class="buttons"
+                                           value="<spring:message text="Delete"/>"/>
+                                    <input type="hidden" name="id" value="${course.id}" />
+                                </form>
                             </c:if>
                         </c:forEach>
                     </td>
