@@ -28,7 +28,6 @@ public class TimetableDao {
     }
 
     public void deleteCourse(int id) {
-
         try {
             Curriculum deletedEntry = em.find(Curriculum.class, id);
             em.getTransaction().begin();
@@ -38,7 +37,6 @@ public class TimetableDao {
         catch (Throwable t) {
             em.getTransaction().rollback();
         }
-
     }
 
     public List<Curriculum> listCourse() {
@@ -54,11 +52,9 @@ public class TimetableDao {
         em.getTransaction().begin();
         em.merge(changeEntry);
         em.getTransaction().commit();
-
     }
 
     public List<Curriculum> selectCourseByName(String courseName) {
-
         try{
             return em.createQuery("select u from Curriculum u where u.courseName =: courseName").setParameter("courseName", courseName).getResultList();
         }
@@ -85,5 +81,12 @@ public class TimetableDao {
         }
     }
 
-
+    public Curriculum findCourseById(int id) {
+        try{
+            return (Curriculum)em.createQuery("select u from Curriculum u where u.id =: id").setParameter("id", id).getSingleResult();
+        }
+        catch (NoResultException e) {
+            return null;
+        }
+    }
 }

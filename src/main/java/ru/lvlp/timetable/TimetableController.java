@@ -89,4 +89,25 @@ public class TimetableController {
         return "redirect:/timetable/add-course";
     }
 
+    @RequestMapping(value = "/timetable/edit-course", method = RequestMethod.POST)
+    public String updateCourse(@RequestParam("id") int id, @RequestParam("courseName") String courseName,@RequestParam("weekDay") int weekDay, @RequestParam("startTime") int startTime,@RequestParam("endTime") int endTime, @RequestParam("groupId") String groupId, Model model) {
+        Curriculum course = this.timetableService.findCourseById(id);
+        course.setCourseName(courseName);
+        course.setWeekDay(weekDay);
+        course.setStartTime(startTime);
+        course.setEndTime(endTime);
+        course.setGroupId(groupId);
+        this.timetableService.updateCourse(course);
+        model.addAttribute("course", course);
+
+        return "redirect:/timetable/add-course";
+    }
+
+    @RequestMapping(value = "/timetable/edit-course", method = RequestMethod.GET)
+    public String updateCourse(@RequestParam("id") int id, Model model) {
+        model.addAttribute("course", this.timetableService.findCourseById(id));
+
+        return "edit-course";
+    }
+
 }

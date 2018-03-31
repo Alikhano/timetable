@@ -9,10 +9,7 @@
     <title>Find a course</title>
 </head>
 
-</head>
-
 <body>
-
 <style type="text/css">
     body {
         background-image:url("http://www.saywhatnowproductions.com/wp-content/uploads/2014/09/webplunder-background-image-technology-online-website-solutions.jpg");
@@ -51,12 +48,13 @@
                 </c:choose></TD>
             <c:if test="${!empty listCourse}">
                 <c:forEach begin="1" end="5" step="1" var="day">
-                    <td align="center" valign="middle" width="100">
+                    <td align="center" valign="middle" width="150">
                         <c:forEach items="${listCourse}" var="course">
                             <c:if test="${course.startTime <= time
                             && course.endTime > time
                             && course.weekDay == day}">
                                 <c:out value="${course.courseName}"/>
+                                <br/>
                                 <c:out value="${course.groupId}"/>
                             </c:if>
                         </c:forEach>
@@ -67,6 +65,5 @@
     </c:forEach>
     </tbody>
 </table>
-
 </body>
 </html>

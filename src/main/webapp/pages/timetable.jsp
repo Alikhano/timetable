@@ -32,15 +32,12 @@
 
 
 <form action="/timetable/find-id" method="post" commandName = "listCourse">
-
     Please enter Group ID: <input type="text" name="groupId" size="35">
     <input type="submit" class="buttons" name="Find by Group ID" value="Find">
-
 
 </form>
 
 <form action="/timetable/find-weekday" method="post" commandName = "listCourse">
-
     Please enter weekday:  <select name="weekday">
     <option value="1">Monday</option>
     <option value="2">Tuesday</option>
@@ -49,16 +46,13 @@
     <option value="5">Friday</option></select>
     <input type="submit" class="buttons" name="Find by weekday" value="Find">
 
-
 </form>
 
 <br/>
 
 <form action="/timetable/find-name" method="post" commandName = "listCourse">
-
     Please enter the course name:<input type="text" name="name" size="35">
     <input type="submit" class="buttons" name="Find by Course Name" value="Find">
-
 </form>
 
 <br/>
@@ -76,7 +70,7 @@
 
     <c:forEach begin="9" end="18" step="1" var="time">
         <tr>
-            <TD align="center" valign="middle" width="80">
+            <td align="center" valign="middle" width="80">
                 <c:choose>
                     <c:when test="${time == 12}">
                         <c:out value="${time}" />:00pm
@@ -87,15 +81,16 @@
                     <c:otherwise>
                         <c:out value="${time}" />:00am
                     </c:otherwise>
-                </c:choose></TD>
+                </c:choose></td>
             <c:if test="${!empty listCourse}">
             <c:forEach begin="1" end="5" step="1" var="day">
-                <td align="center" valign="middle" width="100">
+                <td align="center" valign="middle" width="150">
                     <c:forEach items="${listCourse}" var="course">
                         <c:if test="${course.startTime <= time
                             && course.endTime > time
                             && course.weekDay == day}">
                             <c:out value="${course.courseName}"/>
+                            <br/>
                             <c:out value="${course.groupId}"/>
                         </c:if>
                     </c:forEach>
@@ -106,7 +101,5 @@
     </c:forEach>
     </tbody>
 </table>
-
-
 </body>
 </html>

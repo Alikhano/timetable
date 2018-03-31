@@ -4,9 +4,16 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 <html>
+<head>
+    <title>Add a course</title>
+</head>
 <body>
 
 <style type="text/css">
+
+    body {
+        background-image:url("http://www.saywhatnowproductions.com/wp-content/uploads/2014/09/webplunder-background-image-technology-online-website-solutions.jpg");
+    }
 
     .buttons {
         size: 50px;
@@ -62,7 +69,7 @@
     Groupd ID <input path ="groupId" type="text" name="groupId" size="35">
     <br>
     <br>
-    <input type="submit" name="Submit" value="Add Course">
+    <input type="submit" class = "buttons" name="Submit" value="Add Course">
 
 </form>
 
@@ -94,20 +101,20 @@
             </td>
             <c:if test="${!empty listCourse}">
                 <c:forEach begin="1" end="5" step="1" var="day">
-                    <td align="center" valign="middle" width="100">
+                    <td align="center" valign="middle" width="150">
                         <c:forEach items="${listCourse}" var="course">
                             <c:if test="${course.startTime <= time
                             && course.endTime > time
                             && course.weekDay == day}">
                                 <c:out value="${course.courseName}"/>
+                                <br/>
                                 <c:out value="${course.groupId}"/>
-                                <br>
-                               <%-- <form action="/timetable/edit" method="post" commandName = "course">
+                                <form action="/timetable/edit-course" method="get">
 
                                     <input type="submit" class="buttons"
                                            value="<spring:message text="Edit"/>"/>
-                                </form>--%>
-                                <br>
+                                    <input type="hidden" name="id" value="${course.id}" />
+                                </form>
                                 <form action="/timetable/delete-course" method="post" commandName = "course">
                                     <input type="submit" class="buttons"
                                            value="<spring:message text="Delete"/>"/>
@@ -122,7 +129,5 @@
     </c:forEach>
     </tbody>
 </table>
-
 </body>
-
 </html>

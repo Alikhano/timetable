@@ -47,4 +47,8 @@ public class TimetableService {
         return this.timetableDao.findCourseByGroupId(groupId);
     }
 
+    @Transactional
+    public Curriculum findCourseById(int id) {
+       return this.timetableDao.findCourseById(id);
+    }
 }
