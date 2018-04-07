@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -23,6 +25,7 @@ import javax.transaction.TransactionManager;
 @Configuration
 @EnableWebMvc
 @ComponentScan("ru.lvlp.timetable")
+@Import({SecurityConfig.class})
 @EnableTransactionManagement
 public class TimetableConfig extends WebMvcConfigurerAdapter {
 
@@ -35,6 +38,17 @@ public class TimetableConfig extends WebMvcConfigurerAdapter {
     public EntityManager getEntityManager(EntityManagerFactory emf) {
         return emf.createEntityManager();
     }
+
+    @Bean(name = "dataSource")
+    public DriverManagerDataSource dataSource() {
+        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+        driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/timetable?useSSL=false&amp;LegacyDatetimeCode=false&amp;serverTimezone=UTC");
+        driverManagerDataSource.setUsername("root");
+        driverManagerDataSource.setPassword("Mikkeli9586");
+        return driverManagerDataSource;
+    }
+
 
     @Bean
     public PlatformTransactionManager transactionManager() {
