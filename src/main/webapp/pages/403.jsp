@@ -5,8 +5,23 @@
 <%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 
 <html>
+<head>
+    <title>Acess denied</title>
+</head>
 <body>
 <h1>HTTP Status 403 - Access is denied</h1>
+
+<style type="text/css">
+
+    body {
+        background-image:url("http://www.saywhatnowproductions.com/wp-content/uploads/2014/09/webplunder-background-image-technology-online-website-solutions.jpg");
+    }
+
+    .buttons {
+        size: 50px;
+        background:#e0ffff}
+
+</style>
 
 <c:choose>
     <c:when test="${empty username}">

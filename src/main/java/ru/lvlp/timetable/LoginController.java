@@ -23,4 +23,10 @@ public class LoginController {
         }
         return "403";
     }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginPage(Model model ) {
+
+        return "login";
+    }
 }

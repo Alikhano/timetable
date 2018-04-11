@@ -1,6 +1,9 @@
 package ru.lvlp.timetable;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -13,7 +16,6 @@ public class User {
     private String password;
     private boolean enabled;
 
-
     @OneToOne(cascade=CascadeType.ALL)
     @JoinTable(name="user_roles",
             joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
@@ -23,6 +25,11 @@ public class User {
     public User(){}
 
     public User(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
+    public User(String login, String password, List<GrantedAuthority> grantedAuthorityList){
         this.login = login;
         this.password = password;
     }
