@@ -22,12 +22,13 @@
 </style>
 
 <a href="/timetable">Back to main menu</a>
+<a href="/logout">Logout</a>
 
 <br>
 
 <h1>Add a course</h1>
 
-<form action="/timetable/add-course" method="post" commandName = "course">
+<form action="/timetable/teacher/add-course" method="post" commandName = "course">
     Course Name: <input path ="courseName" type="text" name="courseName" size="35">
     <br>
     Course Time:
@@ -109,13 +110,13 @@
                                 <c:out value="${course.courseName}"/>
                                 <br/>
                                 <c:out value="${course.groupId}"/>
-                                <form action="/timetable/edit-course" method="get">
+                                <form action="/timetable/teacher/edit-course" method="get">
 
                                     <input type="submit" class="buttons"
                                            value="<spring:message text="Edit"/>"/>
                                     <input type="hidden" name="id" value="${course.id}" />
                                 </form>
-                                <form action="/timetable/delete-course" method="post" commandName = "course">
+                                <form action="/timetable/teacher/delete-course" method="post" commandName = "course">
                                     <input type="submit" class="buttons"
                                            value="<spring:message text="Delete"/>"/>
                                     <input type="hidden" name="id" value="${course.id}" />

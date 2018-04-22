@@ -12,15 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class LoginController {
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String accessDeniedGet(Model model){
 
-   @RequestMapping(value = "/access-denied", method = RequestMethod.GET)
-    public String accessDenied(Model model){
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (!(auth instanceof AnonymousAuthenticationToken)) {
-            UserDetails userDetail = (UserDetails) auth.getPrincipal();
-            model.addAttribute("username", userDetail.getUsername());
-        }
         return "403";
     }
 
@@ -28,5 +22,11 @@ public class LoginController {
     public String loginPage(Model model ) {
 
         return "login";
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(Model model ) {
+
+        return "logout";
     }
 }

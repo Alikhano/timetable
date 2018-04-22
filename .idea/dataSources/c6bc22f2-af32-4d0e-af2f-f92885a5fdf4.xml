@@ -933,225 +933,145 @@
     <table id="236" parent="11" name="roles">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="237" parent="11" name="user">
+    <table id="237" parent="11" name="roles_users">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="238" parent="11" name="user_role">
+    <table id="238" parent="11" name="users">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="239" parent="11" name="user_roles">
-      <Engine>InnoDB</Engine>
-    </table>
-    <table id="240" parent="11" name="users">
-      <Engine>InnoDB</Engine>
-    </table>
-    <column id="241" parent="234" name="curriculum_id">
+    <column id="239" parent="234" name="curriculum_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="242" parent="234" name="course_name">
+    <column id="240" parent="234" name="course_name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="234" name="end_time">
+    <column id="241" parent="234" name="end_time">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="234" name="group_id">
+    <column id="242" parent="234" name="group_id">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="245" parent="234" name="start_time">
+    <column id="243" parent="234" name="start_time">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="234" name="week_day">
+    <column id="244" parent="234" name="week_day">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="247" parent="234" name="PRIMARY">
+    <key id="245" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>curriculum_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="248" parent="235" name="next_val">
+    <column id="246" parent="235" name="next_val">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="236" name="id">
+    <column id="247" parent="236" name="role">
       <Position>1</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="236" name="role">
+    <column id="248" parent="236" name="role_id">
       <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="251" parent="236" name="PRIMARY">
+    <key id="249" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
+      <ColNames>role</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="252" parent="237" name="user_id">
+    <column id="250" parent="237" name="role">
       <Position>1</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="237" name="login">
+    <column id="251" parent="237" name="user_id">
       <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="254" parent="237" name="password">
-      <Position>3</Position>
-      <DataType>varchar(255)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="255" parent="237" name="enabled">
-      <Position>4</Position>
-      <DataType>bit(1)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="256" parent="237" name="role">
-      <Position>5</Position>
-      <DataType>int(11)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="257" parent="237" name="role_id">
-      <Position>6</Position>
-      <DataType>int(11)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="258" parent="237" name="id">
-      <Position>7</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="259" parent="237" name="FK80mxj5wwifip3nnxmnntax7hg">
+    <index id="252" parent="237" name="UK_3va0ssladn9mwg8ohg8a8el0">
+      <ColNames>user_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="253" parent="237" name="FKgjs940wk7cummr9x1yx5v2ceo">
       <ColNames>role</ColNames>
     </index>
-    <index id="260" parent="237" name="FKgu4emadq021b7lec2x1dof5jn">
-      <ColNames>role_id</ColNames>
-    </index>
-    <key id="261" parent="237" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
+    <key id="254" parent="237" name="UK_3va0ssladn9mwg8ohg8a8el0">
       <ColNames>user_id</ColNames>
-      <Primary>1</Primary>
+      <UnderlyingIndexName>UK_3va0ssladn9mwg8ohg8a8el0</UnderlyingIndexName>
     </key>
-    <foreign-key id="262" parent="237" name="FK80mxj5wwifip3nnxmnntax7hg">
+    <foreign-key id="255" parent="237" name="FKgjs940wk7cummr9x1yx5v2ceo">
       <ColNames>role</ColNames>
-      <RefSchemaName>timetable</RefSchemaName>
-      <RefTableName>user_role</RefTableName>
-      <RefColNames>role_id</RefColNames>
-    </foreign-key>
-    <foreign-key id="263" parent="237" name="FKgu4emadq021b7lec2x1dof5jn">
-      <ColNames>role_id</ColNames>
-      <RefSchemaName>timetable</RefSchemaName>
-      <RefTableName>user_role</RefTableName>
-      <RefColNames>role_id</RefColNames>
-    </foreign-key>
-    <column id="264" parent="238" name="role_id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="265" parent="238" name="login">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="266" parent="238" name="role">
-      <Position>3</Position>
-      <DataType>varchar(255)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="267" parent="238" name="user_login">
-      <Position>4</Position>
-      <DataType>varchar(255)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="268" parent="238" name="id">
-      <Position>5</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="269" parent="238" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>role_id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="270" parent="239" name="role_id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="271" parent="239" name="user_id">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="272" parent="239" name="FKh8ciramu9cc9q3qcqiv4ue8a6">
-      <ColNames>role_id</ColNames>
-    </index>
-    <key id="273" parent="239" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>user_id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="274" parent="239" name="FKh8ciramu9cc9q3qcqiv4ue8a6">
-      <ColNames>role_id</ColNames>
       <RefSchemaName>timetable</RefSchemaName>
       <RefTableName>roles</RefTableName>
-      <RefColNames>id</RefColNames>
+      <RefColNames>role</RefColNames>
     </foreign-key>
-    <foreign-key id="275" parent="239" name="FKhfh9dx7w3ubf1co1vdev94g3f">
+    <foreign-key id="256" parent="237" name="FKlkcn1l0gnfshcn4rnmak73ta">
       <ColNames>user_id</ColNames>
       <RefSchemaName>timetable</RefSchemaName>
       <RefTableName>users</RefTableName>
-      <RefColNames>id</RefColNames>
+      <RefColNames>user_id</RefColNames>
     </foreign-key>
-    <column id="276" parent="240" name="id">
+    <column id="257" parent="238" name="user_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="277" parent="240" name="login">
+    <column id="258" parent="238" name="enabled">
       <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>tinyint(1)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="278" parent="240" name="password">
+    <column id="259" parent="238" name="login">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="279" parent="240" name="enabled">
+    <column id="260" parent="238" name="password">
       <Position>4</Position>
-      <DataType>bit(1)|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="280" parent="240" name="PRIMARY">
+    <column id="261" parent="238" name="role_role">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="262" parent="238" name="FKbdgv2qbnh6iowc81e9vpcjv2x">
+      <ColNames>role_role</ColNames>
+    </index>
+    <key id="263" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
+      <ColNames>user_id</ColNames>
       <Primary>1</Primary>
     </key>
+    <foreign-key id="264" parent="238" name="FKbdgv2qbnh6iowc81e9vpcjv2x">
+      <ColNames>role_role</ColNames>
+      <RefSchemaName>timetable</RefSchemaName>
+      <RefTableName>roles</RefTableName>
+      <RefColNames>role</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>

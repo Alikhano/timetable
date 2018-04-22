@@ -18,6 +18,7 @@
         size: 50px;
         background:#e0ffff}
 </style>
+<a href="/logout">Logout</a>
 
 <h1>Update an entry</h1>
 
@@ -67,7 +68,7 @@ Weekday: <c:choose>
 </c:choose>
 <br>
 
-<form action="/timetable/edit-course" method="post" commandName = "course">
+<form action="/timetable/teacher/edit-course" method="post" commandName = "course">
     <input type="hidden" name="id" value="${course.id}" />
     Course Name: <input path ="courseName" type="text" name="courseName" size="35">
     <br>

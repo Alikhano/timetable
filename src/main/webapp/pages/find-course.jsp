@@ -18,6 +18,7 @@
 </style>
 
 <a href="/timetable">Back to timetable</a>
+<a href="/logout">Logout</a>
 
 <br>
 

@@ -16,6 +16,6 @@
         background:#e0ffff}
 
 </style>
-
+<h1>You have successfully logged out!</h1>
 </body>
 </html>

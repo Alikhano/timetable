@@ -7,39 +7,44 @@ import java.util.List;
 
 @Entity
 @Table(name="users")
+@NamedQueries(
+        @NamedQuery(
+                name = "FindByLogin",
+                query = "select u from User u where u.login = :login"
+        )
+)
 public class User {
     @Id
-    @GeneratedValue
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private int userId;
 
     private String login;
     private String password;
     private boolean enabled;
-
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinTable(name="user_roles",
-            joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
-            inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="id")})
+    @ManyToOne
     private Role role;
 
+
     public User(){}
+
+    public User(String login, String password, boolean enabled) {
+        this.login = login;
+        this.password = password;
+        this.enabled = enabled;
+    }
 
     public User(String login, String password) {
         this.login = login;
         this.password = password;
     }
 
-    public User(String login, String password, List<GrantedAuthority> grantedAuthorityList){
-        this.login = login;
-        this.password = password;
+    public int getUserId() {
+        return userId;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getLogin() {
@@ -58,19 +63,19 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
     public boolean isEnabled() {
         return enabled;
     }
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

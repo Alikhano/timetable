@@ -59,7 +59,7 @@ public class TimetableController {
         return "find-course";
     }
 
-    @RequestMapping(value = "/timetable/add-course", method = RequestMethod.GET)
+    @RequestMapping(value = "/timetable/teacher/add-course", method = RequestMethod.GET)
     public String listAddedCourse(Model model) {
         model.addAttribute("course", new Curriculum());
         model.addAttribute("listCourse", this.timetableService.listCourse());
@@ -67,7 +67,7 @@ public class TimetableController {
         return "add-course";
     }
 
-    @RequestMapping(value = "/timetable/add-course", method = RequestMethod.POST)
+    @RequestMapping(value = "/timetable/teacher/add-course", method = RequestMethod.POST)
     public String addCourse(@RequestParam("courseName") String courseName,@RequestParam("weekDay") int weekDay, @RequestParam("startTime") int startTime, @RequestParam("endTime") int endTime, @RequestParam("groupId") String groupId, Model model){
         Curriculum course = new Curriculum(courseName, groupId, startTime, endTime, weekDay);
         model.addAttribute("course", course);
@@ -78,18 +78,18 @@ public class TimetableController {
         }
         model.addAttribute("listCourse", this.timetableService.listCourse());
 
-        return "redirect:/timetable/add-course";
+        return "redirect:/timetable/teacher/add-course";
     }
 
-    @RequestMapping(value = "/timetable/delete-course", method = RequestMethod.POST)
+    @RequestMapping(value = "/timetable/teacher/delete-course", method = RequestMethod.POST)
     public String deleteCourse(@RequestParam("id") int id, Model model) {
         this.timetableService.deleteCourse(id);
         model.addAttribute("listCourse", this.timetableService.listCourse());
 
-        return "redirect:/timetable/add-course";
+        return "redirect:/timetable/teacher/add-course";
     }
 
-    @RequestMapping(value = "/timetable/edit-course", method = RequestMethod.POST)
+    @RequestMapping(value = "/timetable/teacher/edit-course", method = RequestMethod.POST)
     public String updateCourse(@RequestParam("id") int id, @RequestParam("courseName") String courseName,@RequestParam("weekDay") int weekDay, @RequestParam("startTime") int startTime,@RequestParam("endTime") int endTime, @RequestParam("groupId") String groupId, Model model) {
         Curriculum course = this.timetableService.findCourseById(id);
         course.setCourseName(courseName);
@@ -100,10 +100,10 @@ public class TimetableController {
         this.timetableService.updateCourse(course);
         model.addAttribute("course", course);
 
-        return "redirect:/timetable/add-course";
+        return "redirect:/timetable/teacher/add-course";
     }
 
-    @RequestMapping(value = "/timetable/edit-course", method = RequestMethod.GET)
+    @RequestMapping(value = "/timetable/teacher/edit-course", method = RequestMethod.GET)
     public String updateCourse(@RequestParam("id") int id, Model model) {
         model.addAttribute("course", this.timetableService.findCourseById(id));
 

@@ -6,23 +6,24 @@ import java.util.List;
 @Entity
 @Table(name="roles")
 public class Role {
-    @Id
-    @GeneratedValue
-    private Integer id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="role_id")
+    private int roleId;
 
+    @Id
+    @Column(name = "role")
     private String role;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="user_roles",
-            joinColumns={@JoinColumn(name="role_id", referencedColumnName="id")},
-            inverseJoinColumns={@JoinColumn(name="user_id", referencedColumnName="id")})
+    @OneToMany
+    @JoinTable(name = "roles_users",
+    joinColumns = {@JoinColumn(name = "role", referencedColumnName = "role")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private List<User> userList;
 
-    public Integer getId() {
-        return id;
+    public int getId() {
+        return roleId;
     }
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(int id) {
+        this.roleId = roleId;
     }
     public String getRole() {
         return role;

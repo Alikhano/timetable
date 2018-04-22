@@ -6,7 +6,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -19,16 +18,14 @@ import org.springframework.web.servlet.view.JstlView;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.transaction.TransactionManager;
 
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("ru.lvlp.timetable")
-@Import({SecurityConfig.class})
+@ComponentScan(basePackages = "ru.lvlp.timetable")
+@Import(SecurityConfig.class)
 @EnableTransactionManagement
-public class TimetableConfig extends WebMvcConfigurerAdapter {
-
+public class TimetableConfig extends WebMvcConfigurerAdapter{
     @Bean
     public EntityManagerFactory getEmf() {
         return Persistence.createEntityManagerFactory("ActPersistenceUnit");
@@ -48,7 +45,6 @@ public class TimetableConfig extends WebMvcConfigurerAdapter {
         driverManagerDataSource.setPassword("Mikkeli9586");
         return driverManagerDataSource;
     }
-
 
     @Bean
     public PlatformTransactionManager transactionManager() {

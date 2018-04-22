@@ -25,6 +25,7 @@
 </style>
 
 <a href="/">Back to main menu</a>
+<a href="/logout">Logout</a>
 
 <br/>
 

@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Logout</title>
+    <title>Login</title>
 </head>
 <body>
 
@@ -29,20 +29,27 @@
 
 <h3>Enter login and password:</h3>
 
-<form name='f' action="${pageContext.request.contextPath}/j_spring_security_check" method='POST'>
+<form name='loginForm'
+      action="<c:url value='/login' />" method='POST'>
+
     <table>
         <tr>
-            <td>Login:</td>
-            <td><input type='text' name='username' value=''></td>
+            <td>User:</td>
+            <td><input type='text' name='login'></td>
         </tr>
         <tr>
             <td>Password:</td>
             <td><input type='password' name='password' /></td>
         </tr>
         <tr>
-            <td><input name="submit" type="submit" value="submit" /></td>
+            <td colspan='2'><input name="submit" type="submit"
+                                   value="submit" /></td>
         </tr>
     </table>
+
+    <input type="hidden" name="${_csrf.parameterName}"
+           value="${_csrf.token}" />
+
 </form>
 
 </body>
