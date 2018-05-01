@@ -27,6 +27,8 @@
     </div>
 </c:if>
 
+<c:if test="${not empty message}"><div>${message}</div></c:if>
+
 <h3>Enter login and password:</h3>
 
 <form name='loginForm'

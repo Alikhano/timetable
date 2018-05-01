@@ -1,4 +1,4 @@
-package ru.lvlp.timetable;
+package ru.lvlp.timetable.entity;
 
 import javax.persistence.*;
 import java.sql.Time;

@@ -1,7 +1,9 @@
-package ru.lvlp.timetable;
+package ru.lvlp.timetable.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.lvlp.timetable.entity.Curriculum;
+import ru.lvlp.timetable.dao.TimetableDao;
 
 import javax.transaction.Transactional;
 import java.util.List;

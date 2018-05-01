@@ -19,7 +19,7 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>ru.lvlp.timetable.TimetableConfig</param-value>
+            <param-value>ru.lvlp.timetable.config.TimetableConfig</param-value>
         </init-param>
 
 

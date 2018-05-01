@@ -3,11 +3,12 @@ package ru.lvlp.timetable;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.lvlp.timetable.dao.TimetableDao;
+import ru.lvlp.timetable.entity.Curriculum;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.sql.Time;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;

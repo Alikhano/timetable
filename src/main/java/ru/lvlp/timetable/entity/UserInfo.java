@@ -1,4 +1,4 @@
-package ru.lvlp.timetable;
+package ru.lvlp.timetable.entity;
 
 public class UserInfo {
     private String login;

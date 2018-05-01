@@ -1,14 +1,15 @@
-package ru.lvlp.timetable;
+package ru.lvlp.timetable.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import ru.lvlp.timetable.entity.Role;
+import ru.lvlp.timetable.dao.UserDao;
 
 import java.util.*;
 
@@ -18,7 +19,7 @@ public class MyUserDetailsService implements UserDetailsService {
     UserDao userDao;
 
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        ru.lvlp.timetable.User user = userDao.findByLogin(login);
+        ru.lvlp.timetable.entity.User user = userDao.findByLogin(login);
         GrantedAuthority authority = buildUserAuthority(user.getRole());
 
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
@@ -26,7 +27,7 @@ public class MyUserDetailsService implements UserDetailsService {
         return buildUserForAuthentication(user,authorities);
     }
 
-    private User buildUserForAuthentication(ru.lvlp.timetable.User user,
+    private User buildUserForAuthentication(ru.lvlp.timetable.entity.User user,
                                             List<GrantedAuthority> authorities) {
         return new User(user.getLogin(), user.getPassword(),
                 user.isEnabled(), true, true, true, authorities);

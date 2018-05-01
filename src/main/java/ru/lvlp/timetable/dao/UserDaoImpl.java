@@ -1,12 +1,12 @@
-package ru.lvlp.timetable;
+package ru.lvlp.timetable.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import ru.lvlp.timetable.entity.User;
+import ru.lvlp.timetable.entity.UserInfo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import java.util.List;
 
 @Repository
 public class UserDaoImpl implements UserDao {

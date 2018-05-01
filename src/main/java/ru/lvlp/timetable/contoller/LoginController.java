@@ -1,4 +1,4 @@
-package ru.lvlp.timetable;
+package ru.lvlp.timetable.contoller;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
@@ -19,14 +20,11 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginPage(Model model ) {
+    public String loginPage(Model model, @RequestParam(value = "logout", required = false) String logout ) {
+        if (logout != null) {
+            model.addAttribute("message", "Logged out from timetable successfully.");
+        }
 
         return "login";
-    }
-
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(Model model ) {
-
-        return "logout";
     }
 }

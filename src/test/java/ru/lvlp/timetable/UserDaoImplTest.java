@@ -3,6 +3,9 @@ package ru.lvlp.timetable;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.lvlp.timetable.dao.UserDaoImpl;
+import ru.lvlp.timetable.entity.User;
+import ru.lvlp.timetable.entity.UserInfo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

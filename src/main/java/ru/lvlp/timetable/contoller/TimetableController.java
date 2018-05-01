@@ -1,15 +1,13 @@
-package ru.lvlp.timetable;
+package ru.lvlp.timetable.contoller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.Time;
-import java.util.List;
+import ru.lvlp.timetable.entity.Curriculum;
+import ru.lvlp.timetable.service.TimetableService;
 
 @Controller
 @RequestMapping("/")

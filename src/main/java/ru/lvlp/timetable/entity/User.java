@@ -1,9 +1,6 @@
-package ru.lvlp.timetable;
-
-import org.springframework.security.core.GrantedAuthority;
+package ru.lvlp.timetable.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name="users")

@@ -1,4 +1,4 @@
-package ru.lvlp.timetable;
+package ru.lvlp.timetable.config;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
